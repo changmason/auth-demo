@@ -61,6 +61,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Config for factory_bot_rails
+  config.include FactoryBot::Syntax::Methods
 
   # Config for database_cleaner
   config.use_transactional_fixtures = false
@@ -106,7 +108,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
-
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
