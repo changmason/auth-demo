@@ -1,0 +1,31 @@
+<h1>Sign up</h1>
+
+<%= form_for(@user, url: sign_up_path, html: {id: 'registration-form'})  do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Account' %>
+  </div>
+<% end %>
