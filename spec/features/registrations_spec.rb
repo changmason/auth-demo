@@ -16,6 +16,11 @@ RSpec.describe 'User sign-up' do
       sign_up_with(email, password, password)
       expect(page).to have_content('Profile')
     end
+
+    it 'sends out welcome email immediately' do
+      expect(UserMailer).to receive_message_chain(:welcome, :deliver_now)
+      sign_up_with(email, password, password)
+    end
   end
 
   context 'form validations' do
