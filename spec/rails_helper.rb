@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'capybara/rspec'
+require 'helpers/integration_helper.rb'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -36,6 +37,9 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  # Include helpers for specific group of examples
+  config.include IntegrationHelper, :type => :feature
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -61,6 +65,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Config for factory_bot_rails
+  config.include FactoryBot::Syntax::Methods
 
   # Config for database_cleaner
   config.use_transactional_fixtures = false
@@ -106,7 +112,6 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
-
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
