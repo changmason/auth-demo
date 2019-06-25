@@ -7,7 +7,8 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       UserMailer.welcome(@user).deliver_now
-      redirect_to profile_path
+      session[:current_user_id] = @user.id
+      redirect_to profile_path, notice: 'Signed up successfully'
     else
       render :new
     end

@@ -15,6 +15,7 @@ RSpec.describe 'User sign-up' do
       expect(page).to have_content('Sign up')
       sign_up_with(email, password, password)
       expect(page).to have_content('Profile')
+      expect(page).to have_content('Signed up successfully')
     end
 
     it 'sends out welcome email immediately' do
