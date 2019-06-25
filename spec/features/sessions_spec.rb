@@ -20,4 +20,13 @@ RSpec.describe 'User sessions' do
       end
     end
   end
+
+  context 'logout' do
+    it 'redirects the user to login page' do
+      login_with(user.email, user.password)
+      visit logout_path
+      expect(page).to have_content('Login')
+      expect(page).to have_content('Logged out successfully')
+    end
+  end
 end
