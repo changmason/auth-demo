@@ -8,6 +8,22 @@ class User < ApplicationRecord
 
   before_create :populate_initial_username
 
+  def reset_password!
+    update(
+      reset_password_token: SecureRandom.hex(20),
+      reset_password_token_expired_at: 6.hours.from_now)
+  end
+
+  def clear_reset_password_token!
+    update(
+      reset_password_token: nil,
+      reset_password_token_expired_at: nil)
+  end
+
+  def reset_password_token_expired?
+    Time.now > reset_password_token_expired_at
+  end
+
   private
 
   def populate_initial_username

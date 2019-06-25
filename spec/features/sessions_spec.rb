@@ -19,6 +19,11 @@ RSpec.describe 'User sessions' do
         expect(page).to have_content('Incorrect email or password')
       end
     end
+
+    it 'has forget password link on the page' do
+      visit login_path
+      expect(page).to have_link('Forget password', href: forget_password_path)
+    end
   end
 
   context 'logout' do
