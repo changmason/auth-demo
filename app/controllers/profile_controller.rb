@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
   before_action :require_current_user
 
-  def show
+  def edit
     @user = current_user
   end
 
@@ -9,7 +9,7 @@ class ProfileController < ApplicationController
     @user = current_user
     @user.update_attributes(user_params)
     flash.now[:notice] = 'Profile or password updated'
-    render :show
+    render :edit
   end
 
   private
