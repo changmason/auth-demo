@@ -26,4 +26,12 @@ RSpec.describe User, type: :model do
       expect(user.username).to eq(user.email.split('@').first)
     end
   end
+
+  describe '#reset_password!' do
+    it 'generates a 40 digit reset password token expires 6 hours later' do
+      user.reset_password!
+      expect(user.reset_password_token.length).to eq(40)
+      expect(user.reset_password_token_expired_at).to be_within(6.hours).of(Time.now)
+    end
+  end
 end
