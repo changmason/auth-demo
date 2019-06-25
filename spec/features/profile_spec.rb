@@ -5,7 +5,6 @@ RSpec.describe 'User profile' do
   let!(:user) { create(:user, email: "#{email_prefix}@example.com") }
 
   before do
-    visit login_path
     login_with(user.email, user.password)
   end
 

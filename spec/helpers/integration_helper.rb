@@ -1,5 +1,6 @@
 module IntegrationHelper
   def sign_up_with(email, password, password_confirmation)
+    visit sign_up_path
     within('#registration-form') do
       fill_in 'Email', with: email
       fill_in 'Password', with: password, exact: true
@@ -9,6 +10,7 @@ module IntegrationHelper
   end
 
   def login_with(email, password)
+    visit login_path
     within('#login-form') do
       fill_in 'Email', with: email
       fill_in 'Password', with: password
