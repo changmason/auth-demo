@@ -9,8 +9,9 @@ RSpec.describe 'User profile' do
   end
 
   context 'page information' do
-    it 'profile page' do
+    it 'has title and logout link' do
       expect(page).to have_content('Profile')
+      expect(page).to have_link('Logout', href: logout_path)
     end
 
     it 'shows signup email prefix as username' do

@@ -1,5 +1,7 @@
 <h1>My Profile</h1>
 
+<%= link_to 'Logout', logout_path, method: :delete %>
+
 <%= form_for(@user, url: profile_path, html: {id: 'profile-form'})  do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
