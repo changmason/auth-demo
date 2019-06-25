@@ -35,6 +35,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#clear_reset_password_token!' do
+    it 'clears reset_password_token and reset_password_token_expired_at' do
+      user.reset_password!
+      user.clear_reset_password_token!
+      expect(user.reset_password_token).to be_nil
+      expect(user.reset_password_token_expired_at).to be_nil
+    end
+  end
+
   describe '#reset_password_token_expired?' do
     it 'returns true if time has passed reset_password_token_expired_at' do
       user.update(reset_password_token_expired_at: 1.hours.ago)

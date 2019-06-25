@@ -1,0 +1,29 @@
+<% if @user %>
+  <h1>Set new password</h1>
+
+  <%= form_for(@user, url: password_path(token: @user.reset_password_token), method: :post, html: {id: 'new-password-form'})  do |form| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Set Password' %>
+    </div>
+
+  <% end %>
+<% end %>

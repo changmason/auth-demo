@@ -14,6 +14,12 @@ class User < ApplicationRecord
       reset_password_token_expired_at: 6.hours.from_now)
   end
 
+  def clear_reset_password_token!
+    update(
+      reset_password_token: nil,
+      reset_password_token_expired_at: nil)
+  end
+
   def reset_password_token_expired?
     Time.now > reset_password_token_expired_at
   end
