@@ -7,4 +7,12 @@ module IntegrationHelper
       click_button 'Create Account'
     end
   end
+
+  def login_with(email, password)
+    within('#login-form') do
+      fill_in 'Email', with: email
+      fill_in 'Password', with: password
+      click_button 'Login'
+    end
+  end
 end
