@@ -14,6 +14,10 @@ class User < ApplicationRecord
       reset_password_token_expired_at: 6.hours.from_now)
   end
 
+  def reset_password_token_expired?
+    Time.now > reset_password_token_expired_at
+  end
+
   private
 
   def populate_initial_username

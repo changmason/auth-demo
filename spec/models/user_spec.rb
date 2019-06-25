@@ -34,4 +34,16 @@ RSpec.describe User, type: :model do
       expect(user.reset_password_token_expired_at).to be_within(6.hours).of(Time.now)
     end
   end
+
+  describe '#reset_password_token_expired?' do
+    it 'returns true if time has passed reset_password_token_expired_at' do
+      user.update(reset_password_token_expired_at: 1.hours.ago)
+      expect(user).to be_reset_password_token_expired
+    end
+
+    it 'returns false if time hasn\'t passed reset_password_token_expired_at' do
+      user.update(reset_password_token_expired_at: 1.hours.from_now)
+      expect(user).to_not be_reset_password_token_expired
+    end
+  end
 end
