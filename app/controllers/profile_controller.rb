@@ -1,10 +1,12 @@
 class ProfileController < ApplicationController
+  before_action :require_current_user
+
   def show
-    @user = User.last
+    @user = current_user
   end
 
   def update
-    @user = User.last
+    @user = current_user
     @user.update_attributes(user_params)
     render :show
   end

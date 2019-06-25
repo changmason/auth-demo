@@ -5,10 +5,15 @@ RSpec.describe 'User profile' do
   let!(:user) { create(:user, email: "#{email_prefix}@example.com") }
 
   before do
-    visit '/profile'
+    visit login_path
+    login_with(user.email, user.password)
   end
 
   context 'page information' do
+    it 'profile page' do
+      expect(page).to have_content('Profile')
+    end
+
     it 'shows signup email prefix as username' do
       expect(find_field('Username').value).to eq(email_prefix)
     end
