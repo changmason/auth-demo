@@ -6,15 +6,11 @@ RSpec.describe 'User sign-up' do
   let(:password) { Faker::Internet.password(8) }
   let(:short_password) { Faker::Internet.password(1, 7) }
 
-  before do
-    visit '/sign_up'
-  end
-
   context 'with correct info' do
     it 'succeeds and redirects user to profile page' do
-      expect(page).to have_content('Sign up')
       sign_up_with(email, password, password)
       expect(page).to have_content('Profile')
+      expect(page).to have_content('Signed up successfully')
     end
 
     it 'sends out welcome email immediately' do

@@ -5,10 +5,14 @@ RSpec.describe 'User profile' do
   let!(:user) { create(:user, email: "#{email_prefix}@example.com") }
 
   before do
-    visit '/profile'
+    login_with(user.email, user.password)
   end
 
   context 'page information' do
+    it 'profile page' do
+      expect(page).to have_content('Profile')
+    end
+
     it 'shows signup email prefix as username' do
       expect(find_field('Username').value).to eq(email_prefix)
     end
@@ -27,6 +31,7 @@ RSpec.describe 'User profile' do
     it 'succeeds if input has more than 5 characters' do
       fill_in 'Username', with: 'Mason'
       click_button 'Update'
+      expect(page).to have_content('Profile or password updated')
       expect(find_field('Username').value).to eq('Mason')
     end
 
@@ -44,6 +49,7 @@ RSpec.describe 'User profile' do
       fill_in 'Password', with: new_password, exact: true
       fill_in 'Password confirmation', with: new_password, exact: true
       click_button 'Update'
+      expect(page).to have_content('Profile or password updated')
       expect(user.reload.authenticate(new_password)).to be_truthy
     end
   end
