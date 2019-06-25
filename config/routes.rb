@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get 'forget_password', to: 'password#forget', as: :forget_password
   post 'reset_password', to: 'password#reset', as: :reset_password
+  get 'new_password', to: 'password#new', as: :new_password
 end

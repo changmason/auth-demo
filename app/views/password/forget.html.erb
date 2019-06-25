@@ -1,0 +1,14 @@
+<h1>Forget password</h1>
+
+<%= form_for('user', url: reset_password_path, html: {id: 'forget-password-form'})  do |form| %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Reset' %>
+  </div>
+
+<% end %>

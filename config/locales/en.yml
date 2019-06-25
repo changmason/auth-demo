@@ -34,3 +34,5 @@ en:
   user_mailer:
     welcome:
       subject: 'Welcome to Auth Demo App'
+    reset_password:
+      subject: 'Reset password instruction'
