@@ -1,20 +1,21 @@
-<h1>Login</h1>
+<div class="modal-header">
+  <h5 class="modal-title" id="app-title">Login</h5>
+</div>
 
-<%= form_for('login', url: login_path, html: {id: 'login-form'})  do |form| %>
+<%= form_for('login', url: login_path, html: {id: 'login-form'})  do |form| %>  <div class="modal-body">
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Login' %>
+  <div class="modal-footer">
+    <%= link_to 'Forget password', forget_password_path %>
+    <%= form.submit 'Login', class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<%= link_to 'Forget password', forget_password_path %>

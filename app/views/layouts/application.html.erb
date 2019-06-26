@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AuthDemo</title>
+    <title>Auth Demo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +10,16 @@
   </head>
 
   <body>
-    <p id="notice"><%= notice %></p>
+    <div class="container">
+      <div class="modal d-block" id="app-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <p id="notice"><%= notice %></p>
 
-    <%= yield %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
