@@ -4,7 +4,7 @@
 
 <%= form_for('user', url: reset_password_path, html: {id: 'forget-password-form'})  do |form| %>
   <div class="modal-body">
-    <%= flash_warning(notice) if notice %>
+    <%= flash_warning(notice) %>
 
     <div class="form-group">
       <%= form.label :email %>

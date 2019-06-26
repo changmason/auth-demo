@@ -5,8 +5,8 @@
 <% if @user %>
   <%= form_for(@user, url: password_path(token: @user.reset_password_token), method: :post, html: {id: 'new-password-form'})  do |form| %>
     <div class="modal-body">
-      <%= flash_warning(notice) if notice %>
-      <%= display_errors(@user) if @user.errors.any? %>
+      <%= flash_warning(notice) %>
+      <%= display_errors(@user.errors)%>
 
       <div class="form-group">
         <%= form.label :password %>
@@ -25,6 +25,6 @@
   <% end %>
 <% else %>
   <div class="modal-body">
-    <%= flash_warning(notice) if notice %>
+    <%= flash_warning(notice) %>
   </div>
 <% end %>
