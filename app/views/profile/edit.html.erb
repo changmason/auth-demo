@@ -6,15 +6,7 @@
 <%= form_for(@user, url: profile_path, html: {id: 'profile-form'})  do |form| %>
   <div class="modal-body">
     <%= flash_warning(notice) if notice %>
-
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= display_errors(@user) if @user.errors.any? %>
 
     <div class="form-group">
       <%= form.label :username %>
