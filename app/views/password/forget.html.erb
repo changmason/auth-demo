@@ -1,14 +1,18 @@
-<h1>Forget password</h1>
+<div class="modal-header">
+  <h5 class="modal-title" id="app-title">Forget password</h5>
+</div>
 
 <%= form_for('user', url: reset_password_path, html: {id: 'forget-password-form'})  do |form| %>
+  <div class="modal-body">
+    <%= flash_warning(notice) %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Reset' %>
+  <div class="modal-footer">
+    <%= form.submit 'Reset', class: "btn btn-primary" %>
   </div>
-
 <% end %>

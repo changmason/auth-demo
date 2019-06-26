@@ -31,14 +31,14 @@ RSpec.describe 'User profile' do
   context 'update username' do
     it 'succeeds if input has more than 5 characters' do
       fill_in 'Username', with: 'Mason'
-      click_button 'Update'
+      click_button 'Update Account'
       expect(page).to have_content('Profile or password updated')
       expect(find_field('Username').value).to eq('Mason')
     end
 
     it 'fails if input has less than 4 characters' do
       fill_in 'Username', with: 'Four'
-      click_button 'Update'
+      click_button 'Update Account'
       expect(page).to have_content('Username is too short (minimum is 5 characters)')
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe 'User profile' do
 
       fill_in 'Password', with: new_password, exact: true
       fill_in 'Password confirmation', with: new_password, exact: true
-      click_button 'Update'
+      click_button 'Update Account'
       expect(page).to have_content('Profile or password updated')
       expect(user.reload.authenticate(new_password)).to be_truthy
     end
