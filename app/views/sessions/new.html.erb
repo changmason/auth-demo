@@ -2,7 +2,10 @@
   <h5 class="modal-title" id="app-title">Login</h5>
 </div>
 
-<%= form_for('login', url: login_path, html: {id: 'login-form'})  do |form| %>  <div class="modal-body">
+<%= form_for('login', url: login_path, html: {id: 'login-form'})  do |form| %>
+  <div class="modal-body">
+    <%= flash_warning(notice) if notice %>
+
     <div class="form-group">
       <%= form.label :email %>
       <%= form.text_field :email, class: "form-control" %>
